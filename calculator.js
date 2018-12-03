@@ -7,6 +7,7 @@ var df=20;
 var workShown="";
 
 function startup(){
+	$(".nextBut").replaceWith("");$(".inv").replaceWith("");
 	probTypes=Object.keys(info);
 	probTypes.push("mix");
 	type=getRand(0,probTypes.length-1);
@@ -134,7 +135,8 @@ function ansHandler(){
 		}else{
 			div="<div class='red incorrect ansResponce'>incorrect input";
 		}
-		var button="<br/><button onclick='showWork()'class='workBut'>Show Work</button></div>";
+		var button="<div class='workBut'><br/><button onclick='showWork()'>Show Work</button></div><br/>"+
+		"<div class='nextBut'><button onclick='startup()'>Generate New Problem</button></div>";
 		$("#"+qNumber).append(div+button);
 	}
 	
@@ -153,6 +155,7 @@ function genWork(thing1, thing2, ans){
 }
 function checkAns(ans){
 	$(".inv").replaceWith("");
+	$(".nextBut").replaceWith("");
 	var input=document.getElementById("text"+qNumber).value;
 	var isNotGoodNumb=/[a-z]|[.]|[\s]/;
 	var inAns;
